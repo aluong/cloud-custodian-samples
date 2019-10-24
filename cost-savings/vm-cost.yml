@@ -1,0 +1,9 @@
+#  custodian report -s output vm-cost.yml --format grid --field cost='"c7n:cost".PreTaxCost'
+policies:
+  - name: vm-cost
+    resource: azure.vm
+    filters:
+      - type: cost
+        timeframe: TheLastMonth
+        op: gt
+        value: 0
