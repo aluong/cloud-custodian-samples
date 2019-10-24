@@ -1,0 +1,7 @@
+policies:
+  - name: delete-empty-resource-groups
+    resource: azure.resourcegroup
+    filters:
+      - type: empty-group
+    actions:
+      - type: delete
