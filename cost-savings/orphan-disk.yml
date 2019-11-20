@@ -1,0 +1,11 @@
+# custodian report -s output cost-savings/orphan-disk.yml  --format grid 
+policies:
+  - name: orphaned-disk
+    resource: azure.disk
+    description: Deletes all disks that are not being managed by a VM 
+    filters:
+      - type: value
+        key: managedBy
+        value: null
+    # actions:
+    #   - type: delete
