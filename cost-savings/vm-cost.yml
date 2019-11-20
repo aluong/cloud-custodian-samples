@@ -1,9 +1,17 @@
-#  custodian report -s output vm-cost.yml --format grid --field cost='"c7n:cost".PreTaxCost'
+#  custodian report -s output cost-savings/vm-cost.yml --format grid --field cost='"c7n:cost".PreTaxCost'
 policies:
   - name: vm-cost
     resource: azure.vm
+    description: Find all VMs with Percentage CPU usage <= 1% over the last week that has cost over $5.
     filters:
+      - type: metric
+        metric: Percentage CPU
+        op: le
+        aggregation: average
+        threshold: 1
+        timeframe: 168
       - type: cost
-        timeframe: TheLastMonth
+        timeframe: WeekToDate
         op: gt
-        value: 0
+        value: 5
+      
