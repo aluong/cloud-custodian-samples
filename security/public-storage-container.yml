@@ -1,7 +1,8 @@
+# custodian report -s output --format grid security/public-storage-container.yml   
 policies:
   - name: storage-container-public
     description: |
-      Find all containers with public access enabled
+      Find all containers with either container or blob public access enabled
     resource: azure.storage-container
     filters:
       - type: value

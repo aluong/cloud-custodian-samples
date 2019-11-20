@@ -1,4 +1,4 @@
-# custodian report -s output cost-savings/orphan-disk.yml  --format grid 
+# custodian report -s output cost-savings/orphan-disk.yml --format grid 
 policies:
   - name: orphaned-disk
     resource: azure.disk
@@ -7,5 +7,5 @@ policies:
       - type: value
         key: managedBy
         value: null
-    # actions:
-    #   - type: delete
+    actions:
+      - type: delete
