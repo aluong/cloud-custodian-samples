@@ -14,4 +14,6 @@ policies:
         timeframe: WeekToDate
         op: gt
         value: 5
+    actions:
+      - type: stop
       
