@@ -1,0 +1,23 @@
+# custodian report -s output maintenance/orphan-disk.yml --format grid 
+policies:
+  - name: orphaned-disk
+    resource: azure.disk
+    description: Find all disks that are not being managed by a VM 
+    filters:
+      - type: value
+        key: managedBy
+        value: null
+    actions:
+      - type: webhook
+        url: https://webhook.site/46404630-8199-468f-b6d6-809cc4624f8f
+        body: >
+            {
+              PolicyName: policy.name,
+              PolicyDescription: policy.description,
+              Resource: resource.
+              {
+                Name: name,
+                Location: location,
+                Sku: sku
+              }
+            }
